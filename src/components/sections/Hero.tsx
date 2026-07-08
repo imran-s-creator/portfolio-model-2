@@ -171,32 +171,7 @@ export default function Hero({ showApp }: HeroProps) {
           </motion.h1>
         </div>
 
-        {/* STATUS */}
-        <motion.div
-          initial={false}
-          animate={startAnim ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
-          transition={{ duration: 0.8, delay: 0.35 }}
-          style={{ marginBottom: 12 }}
-        >
-          <span
-            style={{
-              fontFamily: "'DM Mono', monospace",
-              fontSize: 15,
-              color: "var(--text-secondary)",
-              letterSpacing: "0.1em",
-            }}
-          >
-            <TextType
-              text={["Junior Programmer", "fresh Graduate", "Happy coding!"]}
-              typingSpeed={75}
-              pauseDuration={1500}
-              showCursor
-              cursorCharacter="_"
-              deletingSpeed={50}
-              cursorBlinkDuration={0.5}
-            />
-          </span>
-        </motion.div>
+        {/* status removed */}
 
         {/* DESC */}
         <motion.div
