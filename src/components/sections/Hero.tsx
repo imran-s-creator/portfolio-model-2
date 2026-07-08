@@ -98,6 +98,31 @@ export default function Hero({ showApp }: HeroProps) {
 
         {/* HEADING */}
         <div>
+          <motion.div
+            initial={false}
+            animate={
+              startAnim
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 12 }
+            }
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            style={{ marginBottom: 10 }}
+          >
+            <div
+              style={{
+                fontSize: 14,
+                color: "var(--text-secondary)",
+                fontWeight: 700,
+                lineHeight: 1.3,
+              }}
+            >
+              <strong>
+                Design. Code. Impact.
+                <br />
+                Building sleek digital experiences that stand out & perform.
+              </strong>
+            </div>
+          </motion.div>
           <motion.h1
             initial={false}
             animate={
