@@ -14,6 +14,7 @@ type Props = {
   id?: string
   image?: string
   live_url?: string
+  onPreview?: () => void
 }
 
 export default function PortfolioCard({
@@ -45,7 +46,7 @@ export default function PortfolioCard({
       whileHover={{ y: -4 }}
       className="group relative rounded-[26px] border border-white/10 bg-white/5 p-4 backdrop-blur-xl flex flex-col min-h-[270px]"
     >
-      <div className="w-full h-36 rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03] mb-3">
+      <div className="w-full h-36 rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03] mb-3 cursor-pointer" onClick={() => onPreview && onPreview()}>
         {image ? (
           <img
             src={image}

@@ -6,6 +6,8 @@ import {
   X,
   ChevronDown,
   ChevronUp,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react'
 import usePortfolio from '@/hooks/usePortfolio'
 import PortfolioCard from './PortfolioCard'
@@ -31,8 +33,11 @@ export default function PortfolioShowcase() {
   const [previewOpen, setPreviewOpen] =
     useState(false)
 
-  const [previewImage, setPreviewImage] =
-    useState('')
+  const [previewImages, setPreviewImages] =
+    useState<string[]>([])
+
+  const [previewIndex, setPreviewIndex] =
+    useState(0)
 
   const [showAllProjects, setShowAllProjects] =
     useState(false)
@@ -45,7 +50,7 @@ export default function PortfolioShowcase() {
     <>
       {/* PREVIEW */}
       <AnimatePresence>
-        {previewOpen && (
+        {previewOpen && previewImages.length > 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -60,6 +65,7 @@ export default function PortfolioShowcase() {
             </button>
 
             <motion.img
+              key={previewIndex}
               initial={{
                 scale: 0.92,
                 opacity: 0,
@@ -73,9 +79,27 @@ export default function PortfolioShowcase() {
                 opacity: 0,
               }}
               transition={{ duration: 0.35 }}
-              src={previewImage}
+              src={previewImages[previewIndex]}
               className="max-w-[88vw] max-h-[88vh] rounded-3xl object-contain"
             />
+
+            {previewIndex > 0 && (
+              <button
+                onClick={() => setPreviewIndex((p) => p - 1)}
+                className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center"
+              >
+                <ChevronLeft size={20} />
+              </button>
+            )}
+
+            {previewIndex < previewImages.length - 1 && (
+              <button
+                onClick={() => setPreviewIndex((p) => p + 1)}
+                className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center justify-center"
+              >
+                <ChevronRight size={20} />
+              </button>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
@@ -192,6 +216,19 @@ export default function PortfolioShowcase() {
                               image={item.image_url}
                               live_url={item.live_url}
                               id={item.id}
+                              onPreview={() => {
+                                const imgs = Array.isArray(item.image_urls) && item.image_urls.length > 0
+                                  ? item.image_urls
+                                  : item.image_url
+                                  ? [item.image_url]
+                                  : []
+
+                                if (imgs.length > 0) {
+                                  setPreviewImages(imgs)
+                                  setPreviewIndex(0)
+                                  setPreviewOpen(true)
+                                }
+                              }}
                             />
                           </motion.div>
                         )
@@ -295,9 +332,8 @@ export default function PortfolioShowcase() {
                       }}
                       whileHover={{ y: -4 }}
                       onClick={() => {
-                        setPreviewImage(
-                          item.image_url
-                        )
+                        setPreviewImages([item.image_url])
+                        setPreviewIndex(0)
                         setPreviewOpen(true)
                       }}
                       className="group cursor-pointer rounded-[26px] border border-white/10 bg-white/5 p-4 backdrop-blur-xl"
