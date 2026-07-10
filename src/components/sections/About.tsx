@@ -196,10 +196,10 @@ export default function About() {
                 maxWidth: isMobile ? "100%" : "490px",
               }}
             >
-              Fresh Graduate SMK Rekayasa Perangkat Lunak lulusan 2026 dengan
-              passion di bidang frontend development dan UI modern. Berfokus
-              pada pembuatan website clean, responsif, dan visual yang kuat
-              untuk menghadirkan pengalaman digital yang optimal.
+              Creative and motivated first-year student skilled in UI/UX,
+              front-end development, graphic design, and video editing. Strong
+              communication skills with a passion for building modern digital
+              experiences.
             </motion.p>
 
             {/* QUOTE */}

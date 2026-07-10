@@ -173,35 +173,7 @@ export default function Hero({ showApp }: HeroProps) {
 
         {/* status removed */}
 
-        {/* DESC */}
-        <motion.div
-          initial={false}
-          animate={
-            startAnim
-              ? { opacity: 1, y: 0, scale: 1 }
-              : { opacity: 0, y: 50, scale: 0.96 }
-          }
-          transition={{ duration: 1, delay: 0.5 }}
-          style={{
-            marginBottom: 28,
-            width: "100%",
-            maxWidth: 460, // batas lebar biar jadi 3 baris
-          }}
-        >
-          <p
-            style={{
-              fontSize: 14,
-              color: "var(--text-secondary)",
-              lineHeight: 1.9,
-              letterSpacing: "0.01em",
-              textWrap: "pretty",
-            }}
-          >
-            Menciptakan website modern dengan tampilan clean, responsif, dan
-            elegan. Mengubah ide dan desain menjadi pengalaman digital yang
-            menarik dan mudah digunakan.
-          </p>
-        </motion.div>
+        {/* DESCRIPTION REMOVED */}
 
         {/* SKILLS */}
         <motion.div
